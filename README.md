@@ -437,8 +437,12 @@ gulp.task("watch", function() {
 
 ```
 在终端连续两次  Ctrl + c  退出监听。
+
 运行项目
 ```s
     $  gulp watch
 ```
 
+试试修改index.html，style.scss 文件，打开浏览器，刷新。  
+ 
+ 

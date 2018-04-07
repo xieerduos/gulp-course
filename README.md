@@ -155,3 +155,39 @@ gulp.task("copyHtml",function(){
 ```gulp
     gulp gulpHtml    // gulp gulHtml(刚刚你起的名字)
 ```
+
+
+### 图片压缩
+npm下载压缩图片的依赖包
+```npm
+    npm install gulp-imagemin  --save-dev
+```
+下载完成后，
+进入 gulpfile.js 文件，在文件头部添加 imagemin ....来引入模块
+```javascript
+// 处理任务
+var gulp = require("gulp");
+
+var imagemin = require("gulp-imagemin");
+```
+创建一个 images 文件夹
+```cmd
+    mkdir src/images  // 创建一个 images 文件夹
+```
+下载一张图片，放到images文件夹中，然后
+
+进入 gulpfile.js 继续接着编写 图片压缩代码
+
+```javascript
+// 图片压缩
+gulp.task("imageMin", function(){
+    // 压缩所有的图片
+    gulp.src("src/images/*.jpg")
+        .pipe(imagemin()) // imagemin 是刚刚你引入的模块
+        .pipe(gulp.dest("dist/images")); // 这句话的意思是，在 dist 文件夹下， 再创建一个 images 文件夹，存放压缩过后的图片文件
+});  
+```
+
+```cmd
+    gulp  imageMin   // 在终端执行 压缩图片 命令
+```

@@ -1,6 +1,7 @@
 // 处理任务
 var gulp = require("gulp");
 
+var imagemin = require("gulp-imagemin");
 /**
  * 常用的方法
  * 
@@ -37,3 +38,12 @@ gulp.task("copyHtml",function(){
     // 因为 gulp 是数据流的形式，所以，有pipe方法
     // 上面的这个语句的意思是，当触发pipe方法的时候，就把src下面的*.html(所有html)文件输出到 dist 文件夹下，dist会自动创建
 });  
+
+
+// 图片压缩
+gulp.task("imageMin", function(){
+    // 压缩所有的图片
+    gulp.src("src/images/*.jpg")
+        .pipe(imagemin()) // imagemin 是刚刚你引入的模块
+        .pipe(gulp.dest("dist/images")); // 这句话的意思是，在 dist 文件夹下， 再创建一个 images 文件夹，存放压缩过后的图片文件
+}); 

@@ -25,4 +25,15 @@ gulp.task("message", function(){
 // 定义默认任务
 gulp.task("default", function(){
     return console.log("这是默认的任务，执行要执行 gulp 即可！");
-})
+});
+
+// 拷贝文件
+// "copyHtml" 这个名字自己起，起什么名字到时后执行什么名字就可以
+gulp.task("copyHtml",function(){
+    // 找到要复制的文件
+    gulp.src("src/*.html") // * 是所有的文件。
+        .pipe(gulp.dest("dist"));
+
+    // 因为 gulp 是数据流的形式，所以，有pipe方法
+    // 上面的这个语句的意思是，当触发pipe方法的时候，就把src下面的*.html(所有html)文件输出到 dist 文件夹下，dist会自动创建
+});  

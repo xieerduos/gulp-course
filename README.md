@@ -98,3 +98,60 @@ gulp.task("default", function(){
 });
 ```
 # 处理任务，具体使用 gulp 对象来处理任务
+## 具体内容
+1. 拷贝文件
+2. 压缩图片
+3. 压缩 js 代码
+
+### 拷贝文件
+```html
+1. 在src下创建两个文件
+    echo >src/index.html  回车  Ctrl + c
+    ehoc >src/about.html  回车  Ctrl + c
+2. 修改 index.html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>home </title>
+    </head>
+    <body>
+        <h1>Home page </h1>
+    </body>
+    </html>
+3. 修改 about.html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>About </title>
+    </head>
+    <body>
+        <h1>About  Us </h1>
+    </body>
+    </html>
+```
+#### 进入 gulpfile.js 接着 继续编写
+拷贝文件
+```javascript
+// ......
+
+// 拷贝文件
+// "copyHtml" 这个名字自己起，起什么名字到时后执行什么名字就可以
+gulp.task("copyHtml",function(){
+    // 找到要复制的文件
+    gulp.src("src/*.html") // * 是所有的文件。
+        .pipe(gulp.dest("dist"));
+
+    // 因为 gulp 是数据流的形式，所以，有pipe方法
+    // 上面的这个语句的意思是，当触发pipe方法的时候，就把src下面的*.html(所有html)文件输出到 dist 文件夹下，dist会自动创建
+});  
+
+```
+```gulp
+    gulp gulpHtml    // gulp gulHtml(刚刚你起的名字)
+```

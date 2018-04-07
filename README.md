@@ -408,7 +408,7 @@ gulp.task("scripts", function(){
 });
 
 ```
-修改默认执行多个任务的配置，将 mifify 改为 scripts
+修改默认执行多个任务的配置，将 minify 改为 scripts
 ```s
     // 修改前
     //$  gulp.task("default", ["message", "copyHtml", "imageMin", "sass", "minify"]);

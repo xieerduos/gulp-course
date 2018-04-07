@@ -4,7 +4,8 @@
   "description": "工具\r 1. Gulp是一个开源的JavaScript开源自动化工具。\r 2. Gulp应用于前后端代码管理的一种工具。\r 3. Gulp是基于Node.js和NPM应用的构建工具。\r 4. Gulp主要用于处理耗时及重复的任务。\r 5. Gulp可以解决上百种的任务 例如：代码压缩 合并代码等。",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp watch"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/xieerduos/my-gulp#readme",
   "devDependencies": {
+    "browser-sync": "^2.23.6",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^4.1.0",

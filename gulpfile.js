@@ -8,6 +8,7 @@ var uglify = require("gulp-uglify");
 var sass = require("gulp-sass");
 
 var concat = require("gulp-concat");
+var browserSync = require("browser-sync"); // 热加载
 /**
  * 常用的方法
  *
@@ -80,14 +81,21 @@ gulp.task("scripts", function(){
       // 4. 然后将main.js 放到到 dist/js 里面
 });
 
+gulp.task("browserSync", function() { // 浏览器热加载
+  browserSync({
+    server:{
+      baseDir: "dist"  // 打包后的 index.html 所在的文件夹
+    }
+  });
+});
 
-gulp.task("watch", function() {
-  gulp.watch("src/js/*.js",['scripts']);
-  gulp.watch("src/images/*",['imageMin']);
-  gulp.watch("src/sass/*.scss",['sass']);
-  gulp.watch("src/*.html",['copyHtml']);
-})
+gulp.task("watch",["browserSync", "sass"], function() {
+  gulp.watch("src/js/*.js",['scripts', browserSync.reload]);
+  gulp.watch("src/images/*",['imageMin', browserSync.reload]);
+  gulp.watch("src/sass/*.scss",['sass', browserSync.reload]);
+  gulp.watch("src/*.html",['copyHtml', browserSync.reload]);
+});
 
-// 定义默认任务
-// 执行多个任务
-gulp.task("default", ["message", "imageMin", "sass", "scripts", "copyHtml"]);
+
+// 定义默认执行多个任务
+gulp.task("default", ["browserSync","message", "imageMin", "sass", "scripts", "copyHtml"]);

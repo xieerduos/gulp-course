@@ -2,11 +2,11 @@
 
 ### Gulp是什么？
 工具
-1. Gulp是一个开源的JavaScript开源自动化工具。
-2. Gulp应用于前后端代码管理的一种工具。
-3. Gulp是基于Node.js和NPM应用的构建工具。
-4. Gulp主要用于处理耗时及重复的任务。
-5. Gulp可以解决上百种的任务 例如：代码压缩 合并代码等。
+1. Gulp 是一个开源的JavaScript开源自动化工具。
+2. Gulp 应用于前后端代码管理的一种工具。
+3. Gulp 是基于Node.js和NPM应用的构建工具。
+4. Gulp 主要用于处理耗时及重复的任务。
+5. Gulp 可以解决上百种的任务 例如：代码压缩 合并代码等。
 
 ### Gulp能做什么？
 很多很多...
@@ -14,20 +14,19 @@
 2. 合并代码
 3. 压缩图片
 4. Sass转换
-5. 等等等等
-
+5. ....
 ### Gulp的工作原理
 原理
 1. Gulp是基于Node.js中的数据流
 2. Gulp主要使用pipe事件输入及输出
 3. 插件独立使用
-- Gulp每一个任务都是应用插件
+> - Gulp每一个任务都是应用插件
 
 ### 为什么选择Gulp？
 Gulp的优势
 1. Gulp是基于代码进行配置
 2. Gulp的可读性更高
-- Gulp比Grunt更简单
+> - Gulp比Grunt更简单
 3. Gulp基于数据流，所以可以操作pipe()事件。
 
 ### 如何安装Gulp
@@ -36,6 +35,14 @@ Gulp的优势
 2. 通过 npm install -g gulp 安装全局
 3. 初始化 package.json 
 4. 在项目文件中安装 gulp 
+### 构建项目
+```s
+    $  git init
+    $  git clone https://github.com/xieerduos/gulp-course.git
+    $  cd gulp-course
+    $  npm install
+    $  npm run dev  OR gulp watch
+```
 
 ## 开始
 ```s
@@ -245,6 +252,7 @@ var uglify = require("gulp-uglify");  // 这个
 2. 执行多任务
 3. 代码合并
 4. 监听文件 
+5. 热加载
 
 ### Sass 转换为 css
 下载 gulp-sass 模块
@@ -442,7 +450,52 @@ gulp.task("watch", function() {
 ```s
     $  gulp watch
 ```
+下载热加载模块
+```s
+    $ npm install browser-sync --save-dev
+```
+引入加载 模块
+```javascript
+    var browserSync = require("browser-sync"); // 热加载
+```
 
-试试修改index.html，style.scss 文件，打开浏览器，刷新。  
+在 gulpfile.js 添加热加载任务，并修改其他代码，全部如下
+```javascript
+gulp.task("browserSync", function() { // 浏览器热加载
+  browserSync({
+    server:{
+      baseDir: "dist"  // 打包后的 index.html 所在的文件夹
+    }
+  });
+});
+
+gulp.task("watch",["browserSync", "sass"], function() {
+  gulp.watch("src/js/*.js",['scripts', browserSync.reload]);
+  gulp.watch("src/images/*",['imageMin', browserSync.reload]);
+  gulp.watch("src/sass/*.scss",['sass', browserSync.reload]);
+  gulp.watch("src/*.html",['copyHtml', browserSync.reload]);
+});
+
+
+// 定义 默认 执行多个任务
+gulp.task("default", ["browserSync","message", "imageMin", "sass", "scripts", "copyHtml"]);
+});
+```
+
+执行下面命令，会自动打开浏览器，热加载
+```s
+    $  gulp  watch
+```
  
- 
+在pacage.json 文件的 "scripts":{ } 值对象中添加以下代码
+
+```json
+    "scripts":{
+        "dev": "gulp watch",
+    }
+```
+这样 ```s $ npm run dev  ===  gulp watch ``` 
+
+```s
+    $  npm run dev
+```

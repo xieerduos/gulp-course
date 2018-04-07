@@ -1,0 +1,1 @@
+function sum(l,o){return console.log(l+o)}console.log("这是 file1 中的内容"),sum(5,7),console.log("这个file2.js 信息"),alert("这是file2里面的方法");

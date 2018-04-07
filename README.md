@@ -82,30 +82,32 @@ gulp.task("message", function(){
 });
 ```
 ```s
-$  gulp message   // 执行任务
+    $  gulp message   // 执行任务
 ```
 ### 执行任务
 ```s
-$  gulp message
+    $  gulp message
 ```
-
-
-![Image text](http://##################)
+![Image text](https://raw.githubusercontent.com/xieerduos/images/master/gulp-imgs/gulp-message.png)
 
 ### 定义默认任务， 继续在 gulpfile.js 文件编写
-```s
-$  gulp       // 在终端只需要 gulp 即可执行。
-```
 ```javascript
-// .... 省略内容
-
-// 执行任务 gulp message
+    // .... 
+    // 执行任务    $  gulp message 
 
 // 定义默认任务
 gulp.task("default", function(){
     return console.log("这是默认的任务，执行要执行 gulp 即可！");
 });
 ```
+在终端只需要 gulp 即可执行。
+```s
+    $  gulp       // 
+```
+![Image text](https://raw.githubusercontent.com/xieerduos/images/master/gulp-imgs/gulp-default.png)
+![Image text](https://raw.githubusercontent.com/xieerduos/images/master/gulp-imgs/gulp-default-code.png)
+
+
 ## 处理任务，具体使用 gulp 对象来处理任务
 ### 具体内容
 1. 拷贝文件
@@ -365,7 +367,7 @@ gulp.task("default", function(){
 ```
 
 然后把 dist 文件夹删掉
-![Image text](.............)
+![Image text](https://raw.githubusercontent.com/xieerduos/images/master/gulp-imgs/gulp-del-dir.png)
 ```s
     $  del  dist    回车 ， 然后输入y
     
@@ -494,7 +496,7 @@ gulp.task("default", ["browserSync","message", "imageMin", "sass", "scripts", "c
         "dev": "gulp watch",
     }
 ```
-这样 ```s $ npm run dev  ===  gulp watch ``` 
+这样 ``` $ npm run dev  ===  $ gulp watch ``` 
 
 ```s
     $  npm run dev

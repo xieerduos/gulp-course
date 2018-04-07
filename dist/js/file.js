@@ -1,0 +1,1 @@
+function sum(n,o){return n+o}console.log("这是 file1 中的内容"),sum(5,7);

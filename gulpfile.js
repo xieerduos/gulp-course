@@ -2,6 +2,8 @@
 var gulp = require("gulp");
 
 var imagemin = require("gulp-imagemin");
+
+var uglify = require("gulp-uglify");
 /**
  * 常用的方法
  * 
@@ -47,3 +49,11 @@ gulp.task("imageMin", function(){
         .pipe(imagemin()) // imagemin 是刚刚你引入的模块
         .pipe(gulp.dest("dist/images")); // 这句话的意思是，在 dist 文件夹下， 再创建一个 images 文件夹，存放压缩过后的图片文件
 }); 
+
+// 压缩 js 文件
+
+gulp.task("minify", function(){
+    gulp.src("src/js/*.js")
+        .pipe(uglify())
+        .pipe(gulp.dest("dist/js"));
+});

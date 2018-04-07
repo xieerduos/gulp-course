@@ -158,7 +158,7 @@ gulp.task("copyHtml",function(){
 
 
 ### 图片压缩
-npm下载压缩图片的依赖包
+npm 下载压缩图片的模块
 ```npm
     npm install gulp-imagemin  --save-dev
 ```
@@ -190,4 +190,45 @@ gulp.task("imageMin", function(){
 
 ```cmd
     gulp  imageMin   // 在终端执行 压缩图片 命令
+```
+
+### 压缩 js 代码
+创建一个 js 文件
+```cmd
+    mkdir  src/js 
+    echo  src/js/file.js   Ctrl + c
+```
+
+进入 file.js 文件 编写文件
+```javascript
+console.log('这是 file1 中的内容');
+
+function sum (num1, num2) {
+    return num1 + num2
+}
+
+sum(5, 7);
+```
+安装压缩 js 文件的模块
+```npm
+    npm install gulp-uglify --save-dev
+```
+
+引入模块， 进入 gulpfile.js 编写
+```javascript
+// 处理任务
+var gulp = require("gulp");
+
+var imagemin = require("gulp-imagemin");
+
+var uglify = require("gulp-uglify");  // 这个
+```
+
+进入 gulpfile.js 文件，接着继续编写
+```javascript
+
+```
+执行压缩 js 文件命令
+```cmd
+    gulp minify    // 压缩 js
 ```

@@ -64,7 +64,7 @@ var gulp = require("gulp");
 /**
  * 常用的方法
  * 
- * gulp.task  -- 定义任务，比如说定义一个压缩代码的任务，比如定义一个压缩图的任务，都可以使用gulp.task任务。非常重要的任务
+ * gulp.task  -- 定义任务，比如说定义一个压缩代码的任务，比如定义一个压缩图片的任务，都可以使用gulp.task任务。非常重要的任务
  * 
  * gulp.src  -- 找到到需要执行任务的文件
  * 
@@ -105,6 +105,8 @@ gulp.task("default", function(){
     $  gulp       // 
 ```
 ![Image text](https://raw.githubusercontent.com/xieerduos/images/master/gulp-imgs/gulp-default.png)
+
+---------------------------------------
 ![Image text](https://raw.githubusercontent.com/xieerduos/images/master/gulp-imgs/gulp-default-code.png)
 
 
